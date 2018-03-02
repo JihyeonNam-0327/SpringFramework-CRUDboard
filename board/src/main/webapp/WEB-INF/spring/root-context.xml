@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+    <!-- MySQL dataSource
+    MySQL DataSource 부분에서는 로그를 확인하기 위해 property를 변경했다.
+       가끔 SQL이 잘못되어 에러가 발생하는 경우가 있는데, 
+       이를 대비해 좀 더 자세히 로그를 조사할 수 있도록 로그 설정을 변경하였다. 
+     -->
+    <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+        <property name="url"
+            value="jdbc:log4jdbc:mysql://192.168.23.133:3306/KOPOCTC?useSSL=false&amp;serverTimezone=UTC"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="alslf2gk"></property>
+    </bean>
+
+  	<!-- mybatis SqlSessionFactoryBean
+  	Mybatis SqlSessionFactoryBean 에서는 
+  	Mybatis 설정 기능을 활용할 수 있도록 설정 파일을 읽어오는 부분과 
+  	SQL 문을 작성해둘 mapper.xml 파일을 읽어오는 부분을 추가했다. 
+  	-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <!-- 아래부분은 매핑할 xml파일이 있는 패키지경로를 설정 -->
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+        <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
+    </bean>
+
+ 	<!-- mybatis SqlSessionFactoryBean 
+ 	SqlSessionTemplate는 기본적인 트랜잭션 관리나 쓰레드 처리의 안정성 등을 보장하고, 
+ 	DB의 연결과 종료를 관리하는 부분이다. 
+ 	SqlSessionTemplate을 등록해두면 
+ 	개발자가 직접 트랜잭션 관리나 DB 연결, 종료를 해야 하는 작업을 줄일 수 있다.
+ 	-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
+        destroy-method="clearCache">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+
+	<!-- 
+	bean 등록 
+	MemberDAOImpl에 @Repository 어노테이션이 설정되어있더라도 
+	스프링에서 해당 패키지를 스캔하지 않으면 스피링 빈으로 등록되지 않는다. 
+	그렇기에 root-context.xml 에 빈 등록을 해야 한다. 
+	-->
+	<context:component-scan base-package="com.fuckyoujava.dao"></context:component-scan>
+	<context:component-scan base-package="com.fuckyoujava.service"></context:component-scan>
+
+</beans>

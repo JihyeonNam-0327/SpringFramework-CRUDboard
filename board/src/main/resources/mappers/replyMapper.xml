@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="reply">
+    
+    <!-- 댓글 입력 -->
+    <insert id="insertReply">
+        INSERT INTO reply (bono, replytext, replyer)
+        VALUES (#{id}, #{replytext}, #{replyer})
+    </insert>
+        
+    <!-- 댓글 수정 -->
+    <update id="updateReply" >
+    	UPDATE reply
+            SET
+            replytext = #{replytext}
+        WHERE rno = #{rno}
+    </update>
+    
+    <!-- 댓글 삭제 -->
+    <delete id="deleteReply">
+    	DELETE FROM reply
+    	WHERE rno = #{rno}
+    </delete>
+    
+    <!-- 댓글 갯수(페이징처리) -->
+    <select id="countReply" resultType="int">
+        SELECT COUNT(*) FROM reply WHERE bono=#{id}
+    </select>
+    
+    <!-- 페이징 댓글 목록 -->
+    <select id="listReply" resultType="com.fuckyoujava.dto.ReplyVO">
+    	SELECT  A.* FROM (
+	        SELECT *
+	        FROM reply
+	        WHERE bono=#{id}
+	        ORDER BY rno
+	        ) A
+        WHERE rno limit #{start},5
+    </select>
+    
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">
+           jdbc:mysql://192.168.23.133:3306/KOPOCTC?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">alslf2gk</property>
+        
+        <!-- C2P0 연결 풀 공급자를 사용 -->
+    	<property name="hibernate.c3p0.min_size">5</property> <!-- 최소 JDBC 연결수 -->
+    	<property name="hibernate.c3p0.max_size">20</property> <!-- 최대 연결수 -->
+    	<property name="hibernate.c3p0.timeout">300</property> <!-- 시간 제한 주기 -->
+    	<property name="hibernate.c3p0.max_statements">50</property> <!-- 캐시 문장 -->
+    	<property name="hibernate.c3p0.idle_test_period">3000</property> <!-- 연결 자동검증하기 전 유휴시간 -->
+    	<!-- SQL을 보기 좋은 형태로 표준 출력 -->
+    	<property name="show_sql">true</property>
+    	<property name="format_sql">true</property>
+    	<property name="hbm2ddl.auto">validate</property> <!-- SessionFactory가 생성될 때 스키마 자동 생성 -->
+    	<!-- XML 매핑 파일 목록 나중에 경로가 바뀌면 처리할 것! -->
+    	<mapping resource="com/fuckyoujava/dto/MemberVO.hbm.xml"/> 
+    </session-factory>
+</hibernate-configuration>
