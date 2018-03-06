@@ -11,6 +11,5 @@
         <property name="title" column="TITLE" />
         <property name="date" column="DATE" type="timestamp"/>
         <property name="content" column="CONTENT" type="text"/>
-        
     </class>
 </hibernate-mapping>

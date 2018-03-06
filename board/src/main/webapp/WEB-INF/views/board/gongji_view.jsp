@@ -114,7 +114,7 @@ function listReply2(param){
             for(var i in result.data){
                 output += "<tr>";
                 output += "<td id='detailReply_"+result.data[i].rno+"'><input type=text class='form-control' style='border:none;' id='replyer_"+result.data[i].rno+"' value='"+result.data[i].replyer+" ("+result.data[i].date+")' readonly /><br>";
-                output += "<input type=text style='border:none;' class='form-control' id='replyValue_"+result.data[i].rno+"' value="+result.data[i].replytext+" readonly />";
+                output += "<textarea class='form-control' id='replyValue_"+result.data[i].rno+"' rows='5' readonly>"+result.data[i].replytext+" </textarea>";
                 output += "<button class='btn btn-default pull-right' type='button' id='btnReplyDelete' onclick='replyDelete("+result.data[i].rno+")'>삭제</button>";
                 output += "<button class='btn btn-default pull-right' type='button' id='btnReplyUpdate' onclick='replyUpdate("+result.data[i].rno+")'>수정</button></td>";
                 output += "</tr>";
@@ -200,7 +200,7 @@ function replyUpdate(rno){
 	var replyer = $("#replyer_"+rno).val();
 	var replytext = $("#replyValue_"+rno).val();
 	var output = "<input type=text class='form-control' style='border:none;' id='replyer_"+rno+"' value='"+replyer+"' readonly /><br>";
-	output += "<textarea class='form-control' id='replyValue_"+rno+"' >"+replytext+"</textarea>";
+	output += "<textarea class='form-control' id='replyValue_"+rno+"' rows='5' >"+replytext+"</textarea>";
 	output += "<input type='button' class='btn btn-default pull-right' onclick='replyCancle("+rno+")' value='취소'/>";
 	output += "<input type='button' class='btn btn-default pull-right' onclick='replyUpdate2("+rno+")' value='수정'/>";
 	$("#detailReply_"+rno).html(output);
