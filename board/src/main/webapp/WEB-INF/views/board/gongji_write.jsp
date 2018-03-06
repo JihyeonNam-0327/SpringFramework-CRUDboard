@@ -34,10 +34,21 @@
         });
     });
 </script>
+<!-- OnsenUI 적용(css 2, js) -->
+<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 </head>
 <body>
-<h2 align=center>게시글 작성</h2>
-<br>
+
+	<ons-toolbar>
+	      <div class="left">
+	        <ons-back-button id="btnBack">Njh Board</ons-back-button>
+	      </div>
+	      <div class="center">게시글 쓰기</div>
+	</ons-toolbar>
+ 
+<br><br><br><br>
 <form name="form1" method="post" action="${path}/app/board/gongji_insert.do">
 <table class="table">
     <tr>
@@ -52,12 +63,13 @@
 	    <td colspan=2>
 	    	<button class="btn btn-default pull-right" type="button" id="btnSave">확인</button>
 	        <button class="btn btn-default pull-right" type="reset">다시쓰기</button>
-	        <button class="btn btn-default pull-right" type="button" id="btnBack">목록으로</button>
 	    </td>
     </tr>
 </table>
 </form>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>

@@ -227,9 +227,23 @@ function replyCancle(rno){
 	listReply2()
 }
 </script>
+<!-- OnsenUI 적용(css 2, js) -->
+<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 </head>
 <body>
-<h2 align=center>게시글 보기</h2>
+
+	<ons-toolbar>
+	      <div class="left">
+	        <ons-back-button id="btnBack">Njh Board</ons-back-button>
+	      </div>
+	      <div class="center">게시글 보기</div>
+	</ons-toolbar>
+ 
+<br><br><br><br>
+
+<!-- <h2 align=center>게시글 보기</h2> -->
 <br>
 <form name="form1" method="post">
     <table class="table">
@@ -251,7 +265,6 @@ function replyCancle(rno){
         <input type="hidden" name="id" value="${dto.id}">
         <button class="btn btn-default pull-right" type="button" id="btnUpdete">수정</button>
         <button class="btn btn-default pull-right" type="button" id="btnDelete">삭제</button>
-		<button class="btn btn-default pull-right" type="button" id="btnBack">목록으로</button>
     </td>
     </tr>
     </table>

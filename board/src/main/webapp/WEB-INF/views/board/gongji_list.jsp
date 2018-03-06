@@ -17,10 +17,17 @@
         });
     });
 </script>
+<!-- OnsenUI 적용(css 2, js) -->
+<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 </head>
 <body>
-<h2 align=center>게시글 목록</h2>
-<br>
+<!-- <h2 align=center>게시글 목록</h2> -->
+<ons-toolbar>
+     <div class="center">Njh Board</div>
+</ons-toolbar>
+<br><br><br><br>
 <table class="table table-bordered table-hover">
 <thead >
     <tr >
@@ -93,7 +100,8 @@
 	</c:if>
 </ul>
 </div>
-<button class="btn btn-default pull-right" type="button" id="btnWrite">글쓰기</button>
+<ons-button modifier="large" id="btnWrite" >글쓰기</ons-button>
+<!-- <button class="btn btn-default pull-right" type="button" id="btnWrite">글쓰기</button> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </body>
 </html>
