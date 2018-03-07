@@ -242,7 +242,7 @@ function replyCancle(rno){
 	</ons-toolbar>
  
 <br><br><br><br>
-<div style="width:100%; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
+<div style="width:device-width; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
 <br>
 <form name="form1" method="post">
     <table class="table">
@@ -283,6 +283,8 @@ function replyCancle(rno){
     <br>
     <button class="btn btn-default pull-right" type="button" id="btnReply">댓글 작성</button>
     <br><br>
+    <br><br><br><br><br>
     </div>
+
 </body>
 </html>
