@@ -57,7 +57,6 @@ public class MemberVO {
 						
 			//DB에서 시간 부분만 자르기
 			String printtime = date.substring(11, 19);
-			System.out.println("printtime : " + printtime + "\n");
 			String printdate = date.substring(0, 10);
 			if(timediff<=1) {
 				return printtime;

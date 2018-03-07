@@ -40,6 +40,7 @@
 <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 </head>
 <body>
+<div style="width:device-width; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
 
 	<ons-toolbar>
 	      <div class="left">
@@ -47,9 +48,7 @@
 	      </div>
 	      <div class="center">게시글 쓰기</div>
 	</ons-toolbar>
- 
-<br><br><br><br>
-<div style="width:device-width; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
+	<br><br><br><br>
 <form name="form1" method="post" action="${path}/app/board/gongji_insert.do">
 <table class="table">
     <tr>

@@ -23,12 +23,16 @@
 <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 </head>
 <body>
-<!-- <h2 align=center>게시글 목록</h2> -->
+
+<div style="width:device-width; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
 <ons-toolbar>
-     <div class="center">폴리텍 자유게시판</div>
+     <div class="center">폴리텍 익명 게시판</div>
+     
+     <div class="right">
+     	 <ons-toolbar-button id="btnWrite" >글쓰기</ons-toolbar-button>
+     </div>
 </ons-toolbar>
 <br><br><br><br>
-<div style="width:device-width; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
 <table class="table table-bordered table-hover">
 <thead>
     <tr>
@@ -59,14 +63,14 @@
 	<!-- 시작페이지 -->
 	<c:if test="${page.curPage>1 }">
 	<li class="page-item">
-		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=1">시작 </a>
+		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=1"> &lt;&lt; </a>
 	</li>
 	</c:if>
 	
-	<!-- 이전 페이지 -->
+	<!-- 이전 페이지 (&lt;) = (<) -->
 	<c:if test="${page.curBlock > 1 }">
 	<li class="page-item">
-		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=${page.prevPage}">이전 </a>
+		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=${page.prevPage}"> &lt; </a>
 	</li>
 	</c:if>
 	
@@ -86,23 +90,22 @@
 		</c:choose>
 	</c:forEach>
 	 
-	<!-- 다음 -->
+	<!-- 다음 (&gt;) = (>) -->
 	<c:if test="${page.curBlock <= page.totBlock}">
 	<li class="page-item">
-		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=${page.nextPage}">다음 </a>
+		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=${page.nextPage}">&gt; </a>
 	</li>
 	</c:if>
 	 
 	<!-- 마지막 페이지 -->
 	<c:if test="${page.curPage < page.totPage}">
 	<li class="page-item">
-		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=${page.totPage}">끝 </a>
+		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=${page.totPage}">&gt;&gt; </a>
 	</li>
 	</c:if>
 </ul>
 </div>
-<ons-button modifier="large" id="btnWrite" >글쓰기</ons-button>
-<br><br><br><br><br>
+
 </div>
 
 <!-- <button class="btn btn-default pull-right" type="button" id="btnWrite">글쓰기</button> -->

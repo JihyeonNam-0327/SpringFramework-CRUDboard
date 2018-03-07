@@ -40,7 +40,7 @@
                 url: "${path}/app/board/reply/insert.do",
                 data: param,
                 success: function(){
-                    alert("댓글이 등록되었습니다.");
+                    //alert("댓글이 등록되었습니다.");
                     listReply2();
                 }
             });
@@ -189,7 +189,7 @@ function replyDelete(rno){
          //contentType: "application/json", //==> 생략가능(RestController이기때문에 가능)
          url: "${path}/app/board/reply/delete/"+rno,
          success: function(result){
-        	 alert("댓글이 삭제되었습니다.");
+        	 //alert("댓글이 삭제되었습니다.");
         	 listReply2();
          }
 	 });
@@ -215,8 +215,8 @@ function replyUpdate2(rno){
             type : 'post',
             data : {'replytext' : replytext, 'rno' : rno},
             success : function(data){
-            	alert("댓글이 수정되었습니다.");
-               listReply2(); //댓글 수정후 목록 출력 
+            	//alert("댓글이 수정되었습니다.");
+            	listReply2(); //댓글 수정후 목록 출력 
             }
         });
    }
@@ -233,21 +233,18 @@ function replyCancle(rno){
 <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 </head>
 <body>
-
+<div style="width:device-width; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
 	<ons-toolbar>
 	      <div class="left">
 	        <ons-back-button id="btnBack">게시판으로</ons-back-button>
 	      </div>
 	      <div class="center">게시글 보기</div>
 	</ons-toolbar>
- 
 <br><br><br><br>
-<div style="width:device-width; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
-<br>
 <form name="form1" method="post">
     <table class="table">
         <tr>
-	        <td>작성일자</td>
+	        <td width="70">작성일자</td>
 	        <td>${dto.date}</td>
         </tr>
     <tr>
