@@ -236,14 +236,13 @@ function replyCancle(rno){
 
 	<ons-toolbar>
 	      <div class="left">
-	        <ons-back-button id="btnBack">Njh Board</ons-back-button>
+	        <ons-back-button id="btnBack">게시판으로</ons-back-button>
 	      </div>
 	      <div class="center">게시글 보기</div>
 	</ons-toolbar>
  
 <br><br><br><br>
-
-<!-- <h2 align=center>게시글 보기</h2> -->
+<div style="width:100%; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
 <br>
 <form name="form1" method="post">
     <table class="table">
@@ -284,5 +283,6 @@ function replyCancle(rno){
     <br>
     <button class="btn btn-default pull-right" type="button" id="btnReply">댓글 작성</button>
     <br><br>
+    </div>
 </body>
 </html>

@@ -25,9 +25,10 @@
 <body>
 <!-- <h2 align=center>게시글 목록</h2> -->
 <ons-toolbar>
-     <div class="center">Njh Board</div>
+     <div class="center">폴리텍 자유게시판</div>
 </ons-toolbar>
 <br><br><br><br>
+<div style="width:100%; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
 <table class="table table-bordered table-hover">
 <thead >
     <tr >
@@ -101,6 +102,8 @@
 </ul>
 </div>
 <ons-button modifier="large" id="btnWrite" >글쓰기</ons-button>
+</div>
+<br><br>
 <!-- <button class="btn btn-default pull-right" type="button" id="btnWrite">글쓰기</button> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </body>

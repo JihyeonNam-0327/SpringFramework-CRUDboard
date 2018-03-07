@@ -43,12 +43,13 @@
 
 	<ons-toolbar>
 	      <div class="left">
-	        <ons-back-button id="btnBack">Njh Board</ons-back-button>
+	        <ons-back-button id="btnBack">게시판으로</ons-back-button>
 	      </div>
 	      <div class="center">게시글 쓰기</div>
 	</ons-toolbar>
  
 <br><br><br><br>
+<div style="width:100%; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
 <form name="form1" method="post" action="${path}/app/board/gongji_insert.do">
 <table class="table">
     <tr>
@@ -67,7 +68,7 @@
     </tr>
 </table>
 </form>
-
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 
