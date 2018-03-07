@@ -25,7 +25,7 @@
 <body>
 
 <div style="width:device-width; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
-<ons-toolbar>
+<ons-toolbar fixed-style>
      <div class="center">폴리텍 익명 게시판</div>
      
      <div class="right">
@@ -93,14 +93,14 @@
 	<!-- 다음 (&gt;) = (>) -->
 	<c:if test="${page.curBlock <= page.totBlock}">
 	<li class="page-item">
-		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=${page.nextPage}">&gt; </a>
+		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=${page.nextPage}"> &gt; </a>
 	</li>
 	</c:if>
 	 
 	<!-- 마지막 페이지 -->
 	<c:if test="${page.curPage < page.totPage}">
 	<li class="page-item">
-		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=${page.totPage}">&gt;&gt; </a>
+		<a class="page-link" href="${path}/app/board/gongji_list.do?curPage=${page.totPage}"> &gt;&gt; </a>
 	</li>
 	</c:if>
 </ul>

@@ -114,7 +114,7 @@ function listReply2(param){
             for(var i in result.data){
                 output += "<tr>";
                 output += "<td id='detailReply_"+result.data[i].rno+"'><input type=text class='form-control' style='border:none;' id='replyer_"+result.data[i].rno+"' value='"+result.data[i].replyer+" ("+result.data[i].date+")' readonly /><br>";
-                output += "<textarea class='form-control' id='replyValue_"+result.data[i].rno+"' rows='5' readonly>"+result.data[i].replytext+" </textarea>";
+                output += "<textarea class='form-control' id='replyValue_"+result.data[i].rno+"' rows='2' style='overflow=auto' readonly>"+result.data[i].replytext+" </textarea>";
                 output += "<button class='btn btn-default pull-right' type='button' id='btnReplyDelete' onclick='replyDelete("+result.data[i].rno+")'>삭제</button>";
                 output += "<button class='btn btn-default pull-right' type='button' id='btnReplyUpdate' onclick='replyUpdate("+result.data[i].rno+")'>수정</button></td>";
                 output += "</tr>";
@@ -136,7 +136,7 @@ function calReplyPage(page){
 	// 시작 페이지
 	if(curPage > 1){
 		pageOutput += "<li class='page-item'>"
-		pageOutput += "<a class='page-link' onclick='listReply2(1)' >시작 </a>";
+		pageOutput += "<a class='page-link' onclick='listReply2(1)' > &lt;&lt; </a>";
 		pageOutput += "</li>";
 	}
 	
@@ -145,7 +145,7 @@ function calReplyPage(page){
 	// 이전 블록
 	if(curBlock > 1){
 		pageOutput += "<li class='page-item'>";
-    	pageOutput += "<a class='page-link' onclick='listReply2("+prevPage+")' >이전 </a>";
+    	pageOutput += "<a class='page-link' onclick='listReply2("+prevPage+")' > &lt; </a>";
     	pageOutput += "</li>";
 	}
 	
@@ -166,7 +166,7 @@ function calReplyPage(page){
 	// 다음 블록
 	if(curBlock < totBlock){
 		pageOutput += "<li class='page-item'>";
-    	pageOutput += "<a class='page-link' onclick='listReply2("+nextPage+")'>다음 </a>";
+    	pageOutput += "<a class='page-link' onclick='listReply2("+nextPage+")'> &gt; </a>";
     	pageOutput += "</li>";
 	}       	
 	
@@ -174,7 +174,7 @@ function calReplyPage(page){
 	// 마지막 페이지
 	if(curPage < totPage){
 		pageOutput += "<li class='page-item'>";
-    	pageOutput += "<a class='page-link' onclick='listReply2("+totPage+")'>끝 </a>";
+    	pageOutput += "<a class='page-link' onclick='listReply2("+totPage+")'> &gt;&gt; </a>";
     	pageOutput += "</li>";
 	}
 	
@@ -200,7 +200,7 @@ function replyUpdate(rno){
 	var replyer = $("#replyer_"+rno).val();
 	var replytext = $("#replyValue_"+rno).val();
 	var output = "<input type=text class='form-control' style='border:none;' id='replyer_"+rno+"' value='"+replyer+"' readonly /><br>";
-	output += "<textarea class='form-control' id='replyValue_"+rno+"' rows='5' >"+replytext+"</textarea>";
+	output += "<textarea class='form-control' id='replyValue_"+rno+"' rows='2'  style='overflow=auto' >"+replytext+"</textarea>";
 	output += "<input type='button' class='btn btn-default pull-right' onclick='replyCancle("+rno+")' value='취소'/>";
 	output += "<input type='button' class='btn btn-default pull-right' onclick='replyUpdate2("+rno+")' value='수정'/>";
 	$("#detailReply_"+rno).html(output);
@@ -234,7 +234,7 @@ function replyCancle(rno){
 </head>
 <body>
 <div style="width:device-width; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
-	<ons-toolbar>
+	<ons-toolbar fixed-style>
 	      <div class="left">
 	        <ons-back-button id="btnBack">게시판으로</ons-back-button>
 	      </div>
@@ -244,7 +244,7 @@ function replyCancle(rno){
 <form name="form1" method="post">
     <table class="table">
         <tr>
-	        <td width="70">작성일자</td>
+	        <td width="80">작성일자</td>
 	        <td>${dto.date}</td>
         </tr>
     <tr>

@@ -42,7 +42,7 @@
 <body>
 <div style="width:device-width; height:100%; overflow:scroll; -webkit-overflow-scrolling:touch;">
 
-	<ons-toolbar>
+	<ons-toolbar fixed-style>
 	      <div class="left">
 	        <ons-back-button id="btnBack">게시판으로</ons-back-button>
 	      </div>
@@ -52,7 +52,7 @@
 <form name="form1" method="post" action="${path}/app/board/gongji_insert.do">
 <table class="table">
     <tr>
-	    <td>제목</td>
+	    <td width="50">제목</td>
 	    <td><input class="form-control" name="title" id="title" size="80" placeholder="제목을 입력해주세요"></td>
     </tr>
     <tr>
