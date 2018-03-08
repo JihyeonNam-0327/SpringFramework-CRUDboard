@@ -53,12 +53,12 @@ public class MemberVO {
 			int begin = Integer.parseInt(begindate);
 			int end = Integer.parseInt(enddate);	//현재 날짜
 			//차이 비교
-			int timediff = end - begin;
+			int timediff = end - begin; //20180308 - 20180307
 						
 			//DB에서 시간 부분만 자르기
-			String printtime = date.substring(11, 19);
+			String printtime = date.substring(11, 19); 
 			String printdate = date.substring(0, 10);
-			if(timediff<=1) {
+			if(timediff<1) {
 				return printtime;
 			}
 			return printdate;
@@ -66,7 +66,7 @@ public class MemberVO {
 		}else {
 			return date;
 		}
-			
+		
 	}
 
 	public void setDate(String date) {
